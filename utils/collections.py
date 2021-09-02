@@ -12,8 +12,6 @@ class Mapping(UserDict):
 
     If valid_keys is specified, it will only return the default value for keys in that
     list, raising an exception if key is neither in the dict or in the valid_keys list.
-
-
     """
 
     empty_value = NOT_SET

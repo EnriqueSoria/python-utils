@@ -2,11 +2,8 @@ from collections import UserDict
 from enum import Enum
 from typing import Any, List, Type
 
+from utils.constants import NOT_SET
 from utils.exceptions import MissingKeys
-
-
-class NotSet:
-    ...
 
 
 class Mapping(UserDict):
@@ -19,14 +16,14 @@ class Mapping(UserDict):
 
     """
 
-    empty_value = NotSet()
+    empty_value = NOT_SET
 
     def __init__(
-            self,
-            values: dict,
-            valid_keys: List[str] = None,
-            default_value: Any = empty_value,
-            read_only=False,
+        self,
+        values: dict,
+        valid_keys: List[str] = None,
+        default_value: Any = empty_value,
+        read_only=False,
     ):
         super().__init__()
         self.data = dict(values)
@@ -61,10 +58,10 @@ class Mapping(UserDict):
 
 class EnumMapping(Mapping):
     def __init__(
-            self,
-            values: dict,
-            enum: Type[Enum],
-            default_value: Any = Mapping.empty_value,
+        self,
+        values: dict,
+        enum: Type[Enum],
+        default_value: Any = Mapping.empty_value,
     ):
 
         self.enum = enum

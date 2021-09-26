@@ -24,6 +24,20 @@ class UniqueIterator:
             self.consumed_items.add(item)
             return item
 
+class LenIterator:
+    def __init__(self, length: int, iterator: Iterator):
+        self.iterator = iterator
+        self.length = length
+
+    def __len__(self):
+        return self.length
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        yield from self.iterator  
+        
 
 def first(filter_function, collection, default=NOT_SET):
     """
